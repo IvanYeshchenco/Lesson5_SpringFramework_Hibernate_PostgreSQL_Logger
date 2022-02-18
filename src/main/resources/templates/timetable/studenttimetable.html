@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Timetable</title>
+<link th:insert="fragments/links.html :: stylesheet_file"></link>
+<link th:insert="fragments/links.html :: stylesheet_href"></link>
+
+</head>
+<body>
+	<div th:insert="fragments/header.html :: header"></div>
+	<header th:insert="fragments/navbar.html :: navbar"> </header>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<h1 class="text-success">Timetable student:</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<table class="h3">
+			<tr>
+				<th>
+					<table>
+						<form th:action="@{/timetable/searchtimetablestudent}"
+							th:object="${timetablecontainer}" th:method="POST">
+							<tr>
+								<td>Course Id:</td>
+								<td><input type="text" th:field="*{userId}" /> <br /></td>
+							</tr>
+							<tr>
+								<td>First date:</td>
+								<td><input type="date" th:field="*{timeBegin}" /></td>
+							</tr>
+							<tr>
+								<td>Second date :</td>
+								<td><input type="date" th:field="*{timeEnd}" /></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="submit" value="Search" /></td>
+							</tr>
+						</form>
+					</table>
+				</th>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

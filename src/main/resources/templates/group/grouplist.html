@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Group list</title>
+<link th:insert="fragments/links.html :: stylesheet_file"></link>
+<link th:insert="fragments/links.html :: stylesheet_href"></link>
+
+</head>
+<body>
+	<div th:insert="fragments/header.html :: header"></div>
+	<header th:insert="fragments/navbar.html :: navbar"> </header>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<h1 class="text-success">Manipulation with groups:</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<table class="h5">
+			<tr>
+				<th>
+					<h3>Group list:</h3>
+					<table border="1">
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Capacity</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+						<tr th:each="group : ${list}">
+							<td th:text="${group.groupId}"></td>
+							<td th:text="${group.name}"></td>
+							<td th:text="${group.capacity}"></td>
+							<td><a th:href="@{/group/edit/{id}(id=${group.groupId})}">Edit</a></td>
+							<td><a th:href="@{/group/delete/{id}(id=${group.groupId})}">Delete</a>
+						</tr>
+					</table>
+			<tr>
+				<td><a class="nav-link " href="add" title="Add group">Add
+						group</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

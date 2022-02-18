@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Lesson list</title>
+<link th:insert="fragments/links.html :: stylesheet_file"></link>
+<link th:insert="fragments/links.html :: stylesheet_href"></link>
+
+</head>
+<body>
+	<div th:insert="fragments/header.html :: header"></div>
+	<header th:insert="fragments/navbar.html :: navbar"> </header>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<h1 class="text-success">Manipulation with lessons:</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<table class="h5">
+			<tr>
+				<th>
+					<h3>Lessons list:</h3>
+					<table border="1">
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Time</th>
+							<th>Course name</th>
+							<th>Group id</th>
+							<th>Teacher id</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+						<tr th:each="lesson : ${list}">
+							<td th:text="${lesson.lessonId}"></td>
+							<td th:text="${lesson.name}"></td>
+							<td th:text="${{lesson.time}}"></td>
+							<td th:text="${lesson.courseName}"></td>
+							<td th:text="${lesson.groupId}"></td>
+							<td th:text="${lesson.teacherId}"></td>
+							<td><a th:href="@{/lesson/edit/{id}(id=${lesson.lessonId})}">Edit</a></td>
+							<td><a
+								th:href="@{/lesson/delete/{id}(id=${lesson.lessonId})}">Delete</a>
+						</tr>
+					</table>
+			<tr>
+				<td><a class="nav-link " href="add" title="Add lesson">Add
+						lesson</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

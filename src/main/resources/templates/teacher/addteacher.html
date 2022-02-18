@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Teacher list</title>
+<link th:insert="fragments/links.html :: stylesheet_file"></link>
+<link th:insert="fragments/links.html :: stylesheet_href"></link>
+
+</head>
+<body>
+	<div th:insert="fragments/header.html :: header"></div>
+	<header th:insert="fragments/navbar.html :: navbar"> </header>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<h1 class="text-success">Add teachers:</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<table class="h3">
+			<tr>
+				<th>
+					<table>
+						<form th:action="@{/teacher/addsave}" th:object="${teacher}"
+							th:method="POST">
+							<tr>
+								<td>Teacher Id:</td>
+								<td><input type="text" th:field="*{teacherId}" /> <br /></td>
+							</tr>
+							<tr>
+								<td>Name :</td>
+								<td><input type="text" th:field="*{name}" /> <br /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+										errors</div>></td>
+							</tr>
+							<tr>
+								<td>Sex :</td>
+								<td><input type="text" th:field="*{sex}" /> <br /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Name
+										errors</div>></td>
+							</tr>
+							<tr>
+								<td>Age :</td>
+								<td><input type="text" th:field="*{age}" /> <br /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name
+										errors</div>></td>
+							</tr>
+							<tr>
+								<td>Position:</td>
+								<td><input type="text" th:field="*{position}" /> <br /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('position')}"
+										th:errors="*{position}">Name errors</div>></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="submit" value="Create" /></td>
+							</tr>
+						</form>
+					</table>
+				</th>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Lesson list</title>
+<link th:insert="fragments/links.html :: stylesheet_file"></link>
+<link th:insert="fragments/links.html :: stylesheet_href"></link>
+
+</head>
+<body>
+	<div th:insert="fragments/header.html :: header"></div>
+	<header th:insert="fragments/navbar.html :: navbar"> </header>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<h1 class="text-success">Edit lessons:</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<table class="h3">
+			<tr>
+				<th>
+					<table>
+						<form th:action="@{/lesson/update}" th:object="${lesson}"
+							th:method="POST">
+							<tr>
+								<td>Lesson Id:</td>
+								<td><input type="text" th:field="*{lessonId}" /> <br /></td>
+							</tr>
+							<tr>
+								<td>Name :</td>
+								<td><input type="text" th:field="*{name}" /> <br /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+										errors</div>></td>
+							</tr>
+							<tr>
+								<td>Time :</td>
+								<td><input type="date" th:field="*{time}" /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('time')}" th:errors="*{time}">Name
+										errors</div>></td>
+							</tr>
+							<tr>
+								<td>Course name :</td>
+								<td><input type="text" th:field="*{courseName}" /> <br /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('courseName')}"
+										th:errors="*{courseName}">Name errors</div>></td>
+							</tr>
+							<tr>
+								<td>Group id:</td>
+								<td><input type="text" th:field="*{groupId}" /> <br /></td>
+							</tr>
+						<tr>
+							<td>Teacher id:</td>
+							<td><input type="text" th:field="*{teacherId}" /> <br /></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" value="Edit" /></td>
+						</tr>
+
+						</form>
+					</table>
+				</th>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

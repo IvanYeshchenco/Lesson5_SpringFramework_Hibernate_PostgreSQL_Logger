@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Student list</title>
+<link th:insert="fragments/links.html :: stylesheet_file"></link>
+<link th:insert="fragments/links.html :: stylesheet_href"></link>
+
+</head>
+<body>
+	<div th:insert="fragments/header.html :: header"></div>
+	<header th:insert="fragments/navbar.html :: navbar"> </header>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<h1 class="text-success">Manipulation with students:</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<table class="h5">
+			<tr>
+				<th>
+					<h3>Students list:</h3>
+					<table border="1">
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Sex</th>
+							<th>Age</th>
+							<th>Group id</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+						<tr th:each="student : ${list}">
+							<td th:text="${student.studentId}"></td>
+							<td th:text="${student.name}"></td>
+							<td th:text="${student.sex}"></td>
+							<td th:text="${student.age}"></td>
+							<td th:text="${student.groupId}"></td>
+							<td><a
+								th:href="@{/student/edit/{id}(id=${student.studentId})}">Edit</a></td>
+							<td><a
+								th:href="@{/student/delete/{id}(id=${student.studentId})}">Delete</a>
+						</tr>
+					</table>
+			<tr>
+				<td><a class="nav-link " href="add" title="Add student">Add
+						student</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

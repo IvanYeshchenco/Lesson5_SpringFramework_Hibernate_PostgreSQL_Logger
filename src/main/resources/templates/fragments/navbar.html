@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+	<nav th:fragment="navbar"
+		class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="/" th:text="University"></a>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"
+					th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}">
+					<a class="nav-link" th:href="@{/}" title="University">Home</a>
+				</li>
+				<li class="nav-item"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/course/') ? 'active':''}">
+					<a class="nav-link" th:href="@{/course/list}" title="Courses">Courses</a>
+				</li>
+				<li class="nav-item"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/faculty/') ? 'active':''}">
+					<a class="nav-link" th:href="@{/faculty/list}" title="Faculties">Faculties</a>
+				</li>
+				<li class="nav-item"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/groups/') ? 'active':''}">
+					<a class="nav-link" th:href="@{/group/list}" title="Groups">Groups</a>
+				</li>
+				<li class="nav-item"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/lesson/') ? 'active':''}">
+					<a class="nav-link" th:href="@{/lesson/list}" title="Lessons">Lessons</a>
+				</li>
+				<li class="nav-item"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/students/') ? 'active':''}">
+					<a class="nav-link" th:href="@{/student/list}" title="Students">Students</a>
+				</li>
+				<li class="nav-item"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/teacher/') ? 'active':''}">
+					<a class="nav-link" th:href="@{/teacher/list}" title="Teachers">Teachers</a>
+				</li>
+				<li class="nav-item"
+					th:classappend="${#httpServletRequest.getRequestURI().startsWith('/timetable/') ? 'active':''}">
+					<a class="nav-link" th:href="@{/timetable/timetablehome}"
+					title="Timetable">Timetable</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-2"></div>
+	</nav>
+</body>
+</html>

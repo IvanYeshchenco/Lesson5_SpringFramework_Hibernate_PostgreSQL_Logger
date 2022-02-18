@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Student list</title>
+<link th:insert="fragments/links.html :: stylesheet_file"></link>
+<link th:insert="fragments/links.html :: stylesheet_href"></link>
+
+</head>
+<body>
+	<div th:insert="fragments/header.html :: header"></div>
+	<header th:insert="fragments/navbar.html :: navbar"> </header>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<h1 class="text-success">Add students:</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<table class="h3">
+			<tr>
+				<th>
+					<table>
+						<form th:action="@{/student/addsave}" th:object="${student}"
+							th:method="POST">
+							<tr>
+								<td>Student Id:</td>
+								<td><input type="text" th:field="*{studentId}" /> <br /></td>
+							</tr>
+							<tr>
+								<td>Name :</td>
+								<td><input type="text" th:field="*{name}" /> <br /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+										errors</div>></td>
+							</tr>
+							<tr>
+								<td>Sex :</td>
+								<td><input type="text" th:field="*{sex}" /> <br /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Name
+										errors</div>></td>
+							</tr>
+							<tr>
+								<td>Age :</td>
+								<td><input type="text" th:field="*{age}" /> <br /></td>
+								<td><div style="color: red"
+										th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name
+										errors</div>></td>
+							</tr>
+							<tr>
+								<td>Group id:</td>
+								<td><input type="text" th:field="*{groupId}" /> <br /></td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td><input type="submit" value="Create" /></td>
+							</tr>
+						</form>
+					</table>
+				</th>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
